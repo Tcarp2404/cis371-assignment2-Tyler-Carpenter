@@ -66,28 +66,83 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+    const syrupElement = document.querySelector<HTMLDivElement>(".syrup");
+    if (!syrupElement) return;
+
+    const color = syrups[input.value];
+    if (!color) return;
+
+    syrupElement.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+        'input[name="syrup"]',
+    );
+
+    inputs.forEach((input) => {
+        input.addEventListener("change", () => applySyrup(input));
+    });
+
+    const selected = document.querySelector<HTMLInputElement>(
+        'input[name="syrup"]:checked'
+    );
+
+    if (selected) applySyrup(selected);
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+        'input[name="cream"]'
+    );
+
+    inputs.forEach((input) => {
+        input.addEventListener("change", () => applyCream(input));
+    });
+
+    const selected = document.querySelector<HTMLInputElement>(
+        'input[name="cream"]:checked'
+    );
+
+    if (selected) applyCream(selected);
 }
+
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+        'input[name="temperature"]'
+    );
+
+    inputs.forEach((input) => {
+        input.addEventListener("change", () => applyTemperature(input));
+    });
+
+    const selected = document.querySelector<HTMLInputElement>(
+        'input[name="temperature"]:checked'
+    );
+
+    if (selected) applyTemperature(selected);
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+    const inputs = document.querySelectorAll<HTMLInputElement>(
+        'input[name="base"]'
+    );
+
+    inputs.forEach((input) => {
+        input.addEventListener("change", () => applyBase(input));
+    });
+
+    const selected = document.querySelector<HTMLInputElement>(
+        'input[name="base"]:checked'
+    );
+
+    if (selected) applyBase(selected);
 }
 
 setupBaseListeners();
